@@ -18,7 +18,7 @@ for (const page of pages) {
   if (!html.includes(`<html lang="${page.language}"`)) {
     failures.push(`${page.path}: expected lang=${page.language}`);
   }
-  if (!html.includes(`rel="canonical" href="https://zaloop.ranus.site${page.canonical}"`)) {
+  if (!html.includes(`rel="canonical" href="https://zal0op-engineering.website${page.canonical}"`)) {
     failures.push(`${page.path}: incorrect canonical URL`);
   }
   for (const locale of ['en', 'be', 'x-default']) {
@@ -28,6 +28,9 @@ for (const page of pages) {
   const activeLanguages = [...html.matchAll(/data-language="([^"]+)"[^>]*aria-current="page"/g)];
   if (activeLanguages.length !== 1 || activeLanguages[0]?.[1] !== page.language) {
     failures.push(`${page.path}: expected only ${page.language} to be the active language`);
+  }
+  if (!html.includes('rel="icon" href="/favicon.svg" type="image/svg+xml"')) {
+    failures.push(`${page.path}: missing SVG favicon declaration`);
   }
 
   const assetPaths = [...html.matchAll(/(?:src|href)="(\/assets\/[^"#?]+)["#?]/g)].map(
@@ -40,6 +43,12 @@ for (const page of pages) {
       failures.push(`${page.path}: missing asset ${assetPath}`);
     }
   }
+}
+
+try {
+  await access(resolve(dist, 'favicon.svg'));
+} catch {
+  failures.push('missing favicon.svg');
 }
 
 if (failures.length > 0) {
