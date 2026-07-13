@@ -1,0 +1,24 @@
+{
+  "name": "zaloop-engineering",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate:locales": "node scripts/generate-locales.mjs",
+    "predev": "npm run generate:locales",
+    "dev": "vite --host 0.0.0.0",
+    "prebuild": "npm run generate:locales",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "typecheck": "tsc --noEmit",
+    "validate:static": "node scripts/validate-static.mjs"
+  },
+  "dependencies": {
+    "@fontsource-variable/archivo": "5.2.8",
+    "@fontsource/ibm-plex-mono": "5.2.7"
+  },
+  "devDependencies": {
+    "typescript": "7.0.2",
+    "vite": "8.1.4"
+  }
+}

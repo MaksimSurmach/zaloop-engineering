@@ -1,0 +1,36 @@
+:root {
+  color-scheme: light;
+
+  --color-background: #f2f0e9;
+  --color-surface: #faf9f5;
+  --color-text: #111111;
+  --color-muted: #6e6c65;
+  --color-border: #cbc8be;
+  --color-border-strong: #9f9c93;
+  --color-accent: #c7ff00;
+  --color-focus: #2f6bff;
+
+  --font-sans: 'Archivo Variable', 'Arial Narrow', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+
+  --container-max: 1536px;
+  --page-gutter: clamp(1.25rem, 2.65vw, 2.625rem);
+  --header-height: 4.5rem;
+  --border-width: 1px;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
+  --space-9: 7rem;
+
+  --duration-fast: 150ms;
+  --duration-medium: 320ms;
+  --duration-slow: 700ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+

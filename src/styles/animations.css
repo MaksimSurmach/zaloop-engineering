@@ -1,0 +1,83 @@
+.js [data-hero-item] {
+  opacity: 0;
+  translate: 0 1rem;
+}
+
+.js [data-hero].is-ready [data-hero-item] {
+  animation: hero-enter var(--duration-slow) var(--ease-out) both;
+  animation-delay: calc(var(--entrance-order) * 90ms + 80ms);
+}
+
+.process-model__scanner {
+  animation: scan-process 10s linear infinite;
+}
+
+.js [data-reveal] [data-reveal-item] {
+  opacity: 0;
+  translate: 0 1.25rem;
+  transition:
+    opacity var(--duration-slow) var(--ease-out),
+    translate var(--duration-slow) var(--ease-out);
+  transition-delay: calc(var(--reveal-order, 0) * 55ms);
+}
+
+.js [data-reveal].is-visible [data-reveal-item] {
+  opacity: 1;
+  translate: 0;
+}
+
+[data-rotating-text] {
+  display: inline-block;
+  transition:
+    opacity 220ms ease,
+    translate 220ms ease;
+}
+
+[data-rotating-text].is-changing {
+  opacity: 0;
+  translate: 0 0.4rem;
+}
+
+@keyframes hero-enter {
+  to {
+    opacity: 1;
+    translate: 0;
+  }
+}
+
+@keyframes scan-process {
+  0%,
+  10% {
+    translate: -120% 0;
+  }
+
+  85%,
+  100% {
+    translate: calc(100vw - 2 * var(--page-gutter)) 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .js [data-hero-item] {
+    opacity: 1;
+    translate: 0;
+  }
+
+  .js [data-reveal] [data-reveal-item] {
+    opacity: 1;
+    translate: 0;
+  }
+
+  .process-model__scanner {
+    display: none;
+  }
+}
