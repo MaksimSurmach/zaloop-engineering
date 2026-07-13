@@ -79,7 +79,7 @@ The image is built in two stages and served by Nginx as a non-root user on port 
 
 Pushes to `main` publish multi-architecture images to `ghcr.io/maksimsurmach/zaloop-engineering` with immutable commit-SHA and `latest` tags. The Kubernetes deployment is managed through the `ranus-infra` Argo CD repository and pins the immutable SHA tag.
 
-Production URL: `https://zaloop.apps.ranus.site`.
+Production URL: `https://zaloop.ranus.site`.
 
 To use another domain, update canonical and alternate URLs in `index.html`, the validator expectations in `scripts/validate-static.mjs`, and the Kubernetes Ingress host.
 

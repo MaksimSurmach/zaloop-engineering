@@ -19,8 +19,8 @@ for (const locale of ['en', 'be']) {
   if (locale === 'be') {
     html = html
       .replace(
-        '<link rel="canonical" href="https://zaloop.apps.ranus.site/en/" />',
-        '<link rel="canonical" href="https://zaloop.apps.ranus.site/be/" />',
+        '<link rel="canonical" href="https://zaloop.ranus.site/en/" />',
+        '<link rel="canonical" href="https://zaloop.ranus.site/be/" />',
       )
       .replace('data-language="en" aria-current="page"', 'data-language="en"')
       .replace('data-language="be"', 'data-language="be" aria-current="page"')

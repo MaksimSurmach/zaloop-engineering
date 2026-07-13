@@ -18,7 +18,7 @@ for (const page of pages) {
   if (!html.includes(`<html lang="${page.language}"`)) {
     failures.push(`${page.path}: expected lang=${page.language}`);
   }
-  if (!html.includes(`rel="canonical" href="https://zaloop.apps.ranus.site${page.canonical}"`)) {
+  if (!html.includes(`rel="canonical" href="https://zaloop.ranus.site${page.canonical}"`)) {
     failures.push(`${page.path}: incorrect canonical URL`);
   }
   for (const locale of ['en', 'be', 'x-default']) {

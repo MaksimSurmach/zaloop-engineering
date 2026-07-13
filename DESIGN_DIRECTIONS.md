@@ -45,7 +45,7 @@ Only one accent will be active. Color is used for signals, selected states, focu
 ## Assumptions
 
 - Source repository will be a new public `MaksimSurmach/zaloop-engineering` repository unless approved otherwise.
-- `zaloop.apps.ranus.site` matches the live infrastructure hostname convention.
+- `zaloop.ranus.site` matches the live public TLS hostname convention.
 - The GHCR package must be public, or the cluster needs an image-pull secret; public is the simpler default.
 - Umami configuration and event code can be completed without credentials, but live analytics verification requires a Cloud website ID and dashboard access in Phase 4.
 - English placeholder copy is authoritative for layout. Belarusian remains visibly marked as incomplete in Phase 3.
