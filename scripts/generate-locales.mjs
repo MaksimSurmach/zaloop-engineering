@@ -22,7 +22,7 @@ for (const locale of ['en', 'be']) {
         '<link rel="canonical" href="https://zaloop.ranus.site/en/" />',
         '<link rel="canonical" href="https://zaloop.ranus.site/be/" />',
       )
-      .replace('data-language="en" aria-current="page"', 'data-language="en"')
+      .replace(/(data-language="en"[^>]*) aria-current="page"/, '$1')
       .replace('data-language="be"', 'data-language="be" aria-current="page"')
       .replaceAll('TODO_CONTENT:', 'TODO_TRANSLATION_BE:');
 

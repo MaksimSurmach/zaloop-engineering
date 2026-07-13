@@ -25,6 +25,11 @@ for (const page of pages) {
     if (!html.includes(`hreflang="${locale}"`)) failures.push(`${page.path}: missing ${locale} hreflang`);
   }
 
+  const activeLanguages = [...html.matchAll(/data-language="([^"]+)"[^>]*aria-current="page"/g)];
+  if (activeLanguages.length !== 1 || activeLanguages[0]?.[1] !== page.language) {
+    failures.push(`${page.path}: expected only ${page.language} to be the active language`);
+  }
+
   const assetPaths = [...html.matchAll(/(?:src|href)="(\/assets\/[^"#?]+)["#?]/g)].map(
     (match) => match[1],
   );
