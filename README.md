@@ -46,7 +46,7 @@ Edit source copy in `index.html`. Add localized strings to `src/content/en.json`
 npm run generate:locales
 ```
 
-The Belarusian route translates the interface and hero, then explicitly labels the approved English specification body as a translation-in-progress. It never presents English copy as completed Belarusian content. Russian fallback is not used. See `CONTENT_STATUS.md`.
+The Belarusian route translates the complete interface and ZEF 0.1 specification. Russian fallback is not used. See `CONTENT_STATUS.md`.
 
 ## Animation architecture
 
@@ -87,4 +87,4 @@ To use another domain, update canonical and alternate URLs in `index.html`, the 
 
 ## Editorial status
 
-The English specification is publishable as ZEF 0.1. The Belarusian interface is translated; the long-form specification remains explicitly marked as in translation.
+The English and Belarusian specifications are publishable as ZEF 0.1.

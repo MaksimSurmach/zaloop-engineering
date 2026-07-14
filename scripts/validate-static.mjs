@@ -8,6 +8,13 @@ const pages = [
   { path: 'en/index.html', language: 'en', canonical: '/en/' },
   { path: 'be/index.html', language: 'be', canonical: '/be/' },
 ];
+const allowedBelarusianTechnicalText = new Set([
+  'Zal0op Engineering',
+  'Legoff',
+  'Jira',
+  'Jira MCP',
+  'GitHub MCP',
+]);
 
 const failures = [];
 
@@ -41,8 +48,23 @@ for (const page of pages) {
   if (/>\s*TODO_(?:CONTENT|TRANSLATION_BE):/.test(html)) {
     failures.push(`${page.path}: visible editorial TODO marker found`);
   }
-  if (page.language === 'be' && !html.includes('data-translation-status="partial"')) {
-    failures.push(`${page.path}: missing explicit partial-translation status`);
+  if (page.language === 'be' && !html.includes('data-translation-status="complete"')) {
+    failures.push(`${page.path}: missing complete-translation status`);
+  }
+  if (page.language === 'be' && html.includes('translation-notice')) {
+    failures.push(`${page.path}: stale partial-translation notice found`);
+  }
+  if (page.language === 'be') {
+    const untranslatedText = html
+      .split(/<[^>]+>/g)
+      .map((text) => text.replace(/\s+/g, ' ').trim())
+      .filter((text) => /[A-Za-z]/.test(text) && !/[А-Яа-яЁёІіЎў]/.test(text))
+      .filter((text) => !allowedBelarusianTechnicalText.has(text))
+      .filter((text) => !/^(?:[A-Z0-9 .+/=_-]|&(?:pi|lt|gt|ge);)+$/.test(text));
+
+    if (untranslatedText.length > 0) {
+      failures.push(`${page.path}: untranslated text found: ${[...new Set(untranslatedText)].join(' | ')}`);
+    }
   }
 
   const assetPaths = [...html.matchAll(/(?:src|href)="(\/assets\/[^"#?]+)["#?]/g)].map(
