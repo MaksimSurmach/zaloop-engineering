@@ -81,8 +81,11 @@ const nginx = await readFile(resolve(root, 'nginx.conf'), 'utf8');
 if (!nginx.includes('absolute_redirect off;')) {
   failures.push('nginx.conf: redirects must remain relative behind the HTTPS proxy');
 }
-for (const redirect of ['return 308 /en/;', 'return 308 /be/;']) {
+for (const redirect of ['return 302 /en/;', 'return 302 /be/;']) {
   if (!nginx.includes(redirect)) failures.push(`nginx.conf: missing ${redirect}`);
+}
+if (!nginx.includes('add_header Cache-Control "no-store" always;')) {
+  failures.push('nginx.conf: canonical redirects must not be cached');
 }
 
 if (failures.length > 0) {
