@@ -2,6 +2,7 @@
   "locale": "en",
   "htmlLang": "en",
   "title": "Zal0op Engineering Framework",
-  "description": "Zal0op Engineering is a blocker-first framework for delegated execution and adversarial review.",
+  "description": "Zal0op Engineering turns assigned work into blockers, architecture initiatives, shared ownership or delegated agent execution.",
+  "socialDescription": "A blocker-first framework for neutralizing work before manual execution becomes necessary.",
   "translations": {}
 }

@@ -14,7 +14,23 @@ for (const locale of ['en', 'be']) {
       /<meta\s+name="description"\s+content="[^"]*"\s*\/>/,
       `<meta name="description" content="${dictionary.description}" />`,
     )
-    .replace(/<title>[^<]*<\/title>/, `<title>${dictionary.title}</title>`);
+    .replace(/<title>[^<]*<\/title>/, `<title>${dictionary.title}</title>`)
+    .replace(
+      /(<meta\s+property="og:title"\s+content=")[^"]*("\s*\/>)?/,
+      `$1${dictionary.title}$2`,
+    )
+    .replace(
+      /(<meta\s+property="og:description"\s+content=")[^"]*("\s*\/>)?/,
+      `$1${dictionary.socialDescription}$2`,
+    )
+    .replace(
+      /(<meta\s+name="twitter:title"\s+content=")[^"]*("\s*\/>)?/,
+      `$1${dictionary.title}$2`,
+    )
+    .replace(
+      /(<meta\s+name="twitter:description"\s+content=")[^"]*("\s*\/>)?/,
+      `$1${dictionary.socialDescription}$2`,
+    );
 
   if (locale === 'be') {
     html = html
@@ -22,9 +38,17 @@ for (const locale of ['en', 'be']) {
         '<link rel="canonical" href="https://zal0op-engineering.website/en/" />',
         '<link rel="canonical" href="https://zal0op-engineering.website/be/" />',
       )
+      .replace(
+        '<meta property="og:url" content="https://zal0op-engineering.website/en/" />',
+        '<meta property="og:url" content="https://zal0op-engineering.website/be/" />',
+      )
+      .replace('<html lang="be"', '<html lang="be" data-translation-status="partial"')
       .replace(/(data-language="en"[^>]*) aria-current="page"/, '$1')
       .replace('data-language="be"', 'data-language="be" aria-current="page"')
-      .replaceAll('TODO_CONTENT:', 'TODO_TRANSLATION_BE:');
+      .replace(
+        '    <main id="main-content">',
+        '    <aside class="translation-notice page-shell" role="status">Беларуская рэдакцыя рыхтуецца. Ніжэй паказаны зацверджаны англійскі тэкст спецыфікацыі.</aside>\n\n    <main id="main-content">',
+      );
 
     for (const [key, translated] of Object.entries(dictionary.translations)) {
       const escapedKey = key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');

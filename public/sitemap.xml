@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://zal0op-engineering.website/en/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zal0op-engineering.website/en/" />
+    <xhtml:link rel="alternate" hreflang="be" href="https://zal0op-engineering.website/be/" />
+  </url>
+  <url>
+    <loc>https://zal0op-engineering.website/be/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zal0op-engineering.website/en/" />
+    <xhtml:link rel="alternate" hreflang="be" href="https://zal0op-engineering.website/be/" />
+  </url>
+</urlset>

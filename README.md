@@ -46,7 +46,7 @@ Edit source copy in `index.html`. Add localized strings to `src/content/en.json`
 npm run generate:locales
 ```
 
-Belarusian placeholders intentionally remain English and use visible `TODO_TRANSLATION_BE:*` markers. Russian fallback is not used. See `CONTENT_STATUS.md` for the current editorial status.
+The Belarusian route translates the interface and hero, then explicitly labels the approved English specification body as a translation-in-progress. It never presents English copy as completed Belarusian content. Russian fallback is not used. See `CONTENT_STATUS.md`.
 
 ## Animation architecture
 
@@ -54,14 +54,14 @@ Motion is CSS-first and initialized by `src/scripts/animations.ts`. Intersection
 
 ## Analytics
 
-Umami Cloud is optional. With no website ID, the site adds no analytics script and remains fully functional.
+Umami Cloud is optional locally. With no website ID, the site adds no analytics script and remains fully functional. Production receives the website ID from a GitHub repository secret.
 
 ```sh
 VITE_UMAMI_WEBSITE_ID=your-id
 VITE_UMAMI_SCRIPT_URL=https://cloud.umami.is/script.js
 ```
 
-Tracked events cover language changes, navigation, both hero CTAs, the GitHub link and first views of the framework, blockability and maturity sections. Analytics is anonymous; no advertising or session recording is used.
+Tracked events cover language changes, navigation, both hero CTAs, the GitHub link and first views of the B.L.O.C.K. protocol, engineering levels, neutralization tree, blockability, case study and maturity sections. Analytics is anonymous; no advertising or session recording is used.
 
 For GitHub builds, configure repository secrets `UMAMI_WEBSITE_ID` and optionally `UMAMI_SCRIPT_URL`.
 
@@ -85,8 +85,6 @@ Preview alias: `https://zaloop.ranus.site`.
 
 To use another domain, update canonical and alternate URLs in `index.html`, the validator expectations in `scripts/validate-static.mjs`, and the Kubernetes Ingress hosts.
 
-## Known TODOs
+## Editorial status
 
-- Complete the editorial placeholders listed in `CONTENT_STATUS.md`.
-- Complete Belarusian translations marked `TODO_TRANSLATION_BE:*`.
-- Configure the Umami website ID and verify the first production event in its dashboard.
+The English specification is publishable as ZEF 0.1. The Belarusian interface is translated; the long-form specification remains explicitly marked as in translation.

@@ -9,8 +9,11 @@ declare global {
 }
 
 const trackedSections = new Map([
+  ['block-protocol', 'section_block_protocol_view'],
   ['framework', 'section_framework_view'],
+  ['neutralization', 'section_neutralization_view'],
   ['blockability', 'section_blockability_view'],
+  ['case-study', 'section_case_study_view'],
   ['maturity', 'section_maturity_view'],
 ]);
 
