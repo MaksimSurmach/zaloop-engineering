@@ -2,14 +2,15 @@
   "locale": "be",
   "htmlLang": "be",
   "title": "Фрэймворк Zal0op Engineering",
-  "description": "Zal0op Engineering — фрэймворк для дэлегаванага выканання і спаборніцкага рэв'ю.",
+  "description": "Беларуская рэдакцыя Zal0op Engineering рыхтуецца; зацверджаны тэкст спецыфікацыі пакуль паказаны па-англійску.",
+  "socialDescription": "Блакер-арыентаваны фрэймворк для нейтралізацыі працы да ручнога выканання.",
   "translations": {
     "skip_to_content": "Перайсці да змесціва",
     "nav_framework": "Фрэймворк",
     "nav_movements": "Рухі",
-    "nav_principles": "Прынцыпы",
+    "nav_principles": "Блакеры",
     "nav_metrics": "Метрыкі",
-    "nav_maturity": "Сталасць",
+    "nav_maturity": "Прыклад",
     "read_spec": "Чытаць спецыфікацыю",
     "menu": "Меню",
     "hero_label": "Фрэймворк Zal0op Engineering",
@@ -30,7 +31,7 @@
     "flow_agent": "Агент",
     "flow_review": "Рэв'ю",
     "flow_salary": "Заробак",
-    "footer_language": "Мова / EN — BY",
+    "footer_language": "Мова / EN — BY у перакладзе",
     "footer_productivity": "Прадуктыўнасць — гэта рызыка. Кіруйце ёю адказна."
   }
 }

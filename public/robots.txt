@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zal0op-engineering.website/sitemap.xml

@@ -33,5 +33,18 @@ export function setupNavigation(): void {
   window.matchMedia('(min-width: 1100px)').addEventListener('change', (event) => {
     if (event.matches) setOpen(false);
   });
-}
 
+  const alignHashTarget = (): void => {
+    const targetId = decodeURIComponent(window.location.hash.slice(1));
+    if (!targetId) return;
+
+    document.getElementById(targetId)?.scrollIntoView({ block: 'start' });
+  };
+
+  if (window.location.hash) {
+    window.addEventListener('load', alignHashTarget, { once: true });
+    document.fonts?.ready.then(alignHashTarget).catch(() => undefined);
+  }
+
+  window.addEventListener('hashchange', alignHashTarget);
+}

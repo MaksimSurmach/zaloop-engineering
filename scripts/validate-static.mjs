@@ -32,6 +32,18 @@ for (const page of pages) {
   if (!html.includes('rel="icon" href="/favicon.svg" type="image/svg+xml"')) {
     failures.push(`${page.path}: missing SVG favicon declaration`);
   }
+  if (!html.includes('name="twitter:card" content="summary_large_image"')) {
+    failures.push(`${page.path}: missing Twitter card metadata`);
+  }
+  if (!html.includes('property="og:image" content="https://zal0op-engineering.website/og-zaloop.png"')) {
+    failures.push(`${page.path}: missing Open Graph image`);
+  }
+  if (/>\s*TODO_(?:CONTENT|TRANSLATION_BE):/.test(html)) {
+    failures.push(`${page.path}: visible editorial TODO marker found`);
+  }
+  if (page.language === 'be' && !html.includes('data-translation-status="partial"')) {
+    failures.push(`${page.path}: missing explicit partial-translation status`);
+  }
 
   const assetPaths = [...html.matchAll(/(?:src|href)="(\/assets\/[^"#?]+)["#?]/g)].map(
     (match) => match[1],
@@ -49,6 +61,20 @@ try {
   await access(resolve(dist, 'favicon.svg'));
 } catch {
   failures.push('missing favicon.svg');
+}
+
+try {
+  await access(resolve(dist, 'og-zaloop.png'));
+} catch {
+  failures.push('missing og-zaloop.png');
+}
+
+for (const publicFile of ['robots.txt', 'sitemap.xml']) {
+  try {
+    await access(resolve(dist, publicFile));
+  } catch {
+    failures.push(`missing ${publicFile}`);
+  }
 }
 
 if (failures.length > 0) {
